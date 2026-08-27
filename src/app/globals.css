@@ -2,25 +2,117 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0b1220;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--background);
+}
+
+html {
+  background: var(--background);
 }
 
 body {
+  min-height: 100vh;
+  overflow-x: clip;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  position: relative;
+  overflow: clip;
+}
+
+section[id] {
+  scroll-margin-top: 84px;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  text-decoration: none;
+}
+
+::selection {
+  background: #cfe2ff;
+  color: #0753eb;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: #cbd5e1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+[data-scroll-reveal],
+[data-scroll-stagger] > *,
+[data-scroll-surface],
+[data-scroll-parallax],
+[data-scroll-float],
+[data-scroll-line] {
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-scroll-reveal],
+  [data-scroll-stagger] > *,
+  [data-scroll-surface],
+  [data-scroll-parallax],
+  [data-scroll-float],
+  [data-scroll-line] {
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
 }
